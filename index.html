@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Begin a moonlit classical adventure through Rome, then solve riddles to reveal a Cinderella puzzle."
+    />
+    <meta name="theme-color" content="#10172c" />
+    <title>A Classical Adventure — Once Upon a Riddle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <section class="landing" id="landing" aria-labelledby="landing-title">
+      <div class="landing-art" aria-hidden="true"></div>
+      <div class="wallet-display landing-wallet" aria-label="LUVEX Bucks balance">
+        <img src="assets/luvex-gem.png" alt="" />
+        <span><strong id="wallet-balance-landing">0</strong> LUVEX</span>
+      </div>
+      <div class="landing-content">
+        <p class="landing-eyebrow"><span aria-hidden="true">✦</span> Your story starts tonight <span aria-hidden="true">✦</span></p>
+        <h1 class="landing-title" id="landing-title">A Classical<br />Adventure</h1>
+        <button class="play-button" id="play-button" type="button">
+          <span>Play</span><span class="play-arrow" aria-hidden="true">→</span>
+        </button>
+        <p class="landing-subtitle">A 4-day classical adventure awaits.<br />Journey safely.</p>
+      </div>
+      <div class="landing-footnote"><span aria-hidden="true">✧</span> One story. Four clues. A little magic.</div>
+      <section class="reward-notice" id="reward-notice" role="status" aria-live="polite" hidden>
+        <img class="reward-gem" src="assets/luvex-gem.png" alt="" />
+        <div class="reward-copy">
+          <span class="reward-intro">Story complete! You received</span>
+          <p class="reward-amount"><span class="reward-value">+150</span> <span class="reward-luvex">LUVEX</span> <span class="reward-currency">BUCKS</span></p>
+          <span class="reward-balance">Wallet total: <strong id="wallet-balance-reward">0</strong> LUVEX</span>
+          <span class="reward-save-note" id="reward-save-note" hidden></span>
+        </div>
+        <button class="reward-dismiss" id="reward-dismiss" type="button" aria-label="Dismiss reward notification">×</button>
+      </section>
+    </section>
+
+    <div id="game-screen" hidden>
+      <header class="site-header">
+        <button class="brand home-button" id="home-button" type="button" aria-label="Return to the adventure landing page">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span>once upon a <strong>riddle</strong></span>
+        </button>
+        <span class="chapter-label"><span class="chapter-dot"></span> A fairytale puzzle</span>
+        <div class="wallet-display game-wallet" aria-label="LUVEX Bucks balance">
+          <img src="assets/luvex-gem.png" alt="" />
+          <span><strong id="wallet-balance-game">0</strong> LUVEX</span>
+        </div>
+      </header>
+
+      <main class="page-shell">
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow"><span>✦</span> A story in little pieces <span>✦</span></p>
+          <h1 id="page-title">A Cinderella <em>story</em></h1>
+          <p class="intro-copy">
+            Follow the clues, choose the right words, and watch a little magic come together.
+          </p>
+        </section>
+
+        <section class="game-card" aria-label="Cinderella riddle game">
+        <div class="riddle-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">THE RIDDLE BOOK</p>
+              <h2 id="riddle-title" tabindex="-1">A little clue for you</h2>
+            </div>
+            <div class="progress-count" aria-live="polite">
+              <span id="progress-current">01</span>
+              <span class="progress-divider">/</span>
+              <span id="progress-total">04</span>
+            </div>
+          </div>
+
+          <div class="progress-track" aria-label="Riddle progress">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+
+          <div class="riddle-content" aria-live="polite">
+            <span class="clue-star" aria-hidden="true">✧</span>
+            <p class="riddle-text" id="riddle-text"></p>
+            <p class="answer-prompt">Pick the word that solves it</p>
+            <div class="answer-options" id="answer-options"></div>
+          </div>
+
+          <p class="game-message" id="game-message" role="status" aria-live="polite"></p>
+          <div class="panel-footer">
+            <span class="tiny-sparkle" aria-hidden="true">✦</span>
+            <span>Every answer reveals a piece of the tale</span>
+          </div>
+        </div>
+
+        <div class="puzzle-panel">
+          <div class="puzzle-heading">
+            <div>
+              <p class="section-kicker">THE PUZZLE BOARD</p>
+              <h2>A night to remember</h2>
+            </div>
+            <span class="piece-counter" id="piece-counter" aria-live="polite">0 of 4 pieces</span>
+          </div>
+
+          <div class="puzzle-board" id="puzzle-board" aria-label="A four-piece Cinderella picture puzzle">
+            <svg class="puzzle-art" viewBox="0 0 736 855" role="img" aria-labelledby="art-title art-description">
+              <title id="art-title">Cinderella and the prince at the palace</title>
+              <desc id="art-description">
+                Cinderella and the prince share a glass slipper in front of a glowing palace. The picture is revealed as four interlocking puzzle pieces.
+              </desc>
+              <defs>
+                <clipPath id="piece-a">
+                  <path d="M0 0H368V182C368 198 418 196 418 230C418 264 368 262 368 278V460H230C214 460 216 510 184 510C152 510 154 460 138 460H0Z" />
+                </clipPath>
+                <clipPath id="piece-b">
+                  <path d="M368 0H736V460H598C582 460 584 510 552 510C520 510 522 460 506 460H368V278C368 262 418 264 418 230C418 196 368 198 368 182V0Z" />
+                </clipPath>
+                <clipPath id="piece-c">
+                  <path d="M0 460H138C154 460 152 410 184 410C216 410 214 460 230 460H368V855H0Z" />
+                </clipPath>
+                <clipPath id="piece-d">
+                  <path d="M368 460H506C522 460 520 410 552 410C584 410 582 460 598 460H736V855H368Z" />
+                </clipPath>
+              </defs>
+              <g class="puzzle-piece" data-piece="0"><image href="assets/cinderella-puzzle.jpg" width="736" height="855" clip-path="url(#piece-a)" /></g>
+              <g class="puzzle-piece" data-piece="1"><image href="assets/cinderella-puzzle.jpg" width="736" height="855" clip-path="url(#piece-b)" /></g>
+              <g class="puzzle-piece" data-piece="2"><image href="assets/cinderella-puzzle.jpg" width="736" height="855" clip-path="url(#piece-c)" /></g>
+              <g class="puzzle-piece" data-piece="3"><image href="assets/cinderella-puzzle.jpg" width="736" height="855" clip-path="url(#piece-d)" /></g>
+              <g class="empty-board">
+                <rect x="1" y="1" width="734" height="853" rx="12" />
+                <path d="M368 0V182C368 198 418 196 418 230C418 264 368 262 368 278V855" />
+                <path d="M0 460H138C154 460 152 510 184 510C216 510 214 460 230 460H506C522 460 520 410 552 410C584 410 582 460 598 460H736" />
+              </g>
+            </svg>
+            <div class="board-hint" id="board-hint">
+              <span class="hint-sparkle" aria-hidden="true">✧</span>
+              <span>Your fairytale is waiting<br />to be pieced together</span>
+            </div>
+            <div class="complete-stamp" id="complete-stamp" aria-hidden="true">THE END <span>♥</span></div>
+          </div>
+
+          <p class="puzzle-caption" id="puzzle-caption">Solve a riddle to reveal the first piece</p>
+        </div>
+        </section>
+
+        <footer class="page-footer">
+          <span>Made of moonlight &amp; a little word magic</span>
+          <span aria-hidden="true">♡</span>
+        </footer>
+      </main>
+    </div>
+    <section class="end-screen" id="end-screen" aria-labelledby="end-title" hidden>
+      <div class="end-screen-header">
+        <span class="end-chapter"><span aria-hidden="true">✦</span> A Cinderella story · Chapter complete</span>
+        <div class="wallet-display end-wallet" aria-label="LUVEX Bucks balance">
+          <img src="assets/luvex-gem.png" alt="" />
+          <span><strong id="wallet-balance-end">0</strong> LUVEX</span>
+        </div>
+      </div>
+      <main class="end-content">
+        <p class="end-eyebrow">✧ A little message for the road ✧</p>
+        <div class="scroll-stage">
+          <img class="scroll-art" src="assets/farewell-scroll.png" alt="" />
+          <div class="scroll-copy">
+            <h1 id="end-title" tabindex="-1">The day has danced away, but leaves you with another clue. Collect the letters, for at the end they unite.</h1>
+            <p class="day-letter">The letter of the day is <strong>D</strong></p>
+          </div>
+        </div>
+        <p class="end-prompt">Keep this letter safe. More clues are waiting in the next story.</p>
+        <button class="back-start-button" id="back-start-button" type="button">
+          <span aria-hidden="true">←</span> Back to start
+        </button>
+      </main>
+    </section>
+    <p class="wallet-message visually-hidden" id="wallet-message" role="status" aria-live="polite"></p>
+    <button class="music-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Turn music on">
+      <span class="music-icon" aria-hidden="true">♫</span>
+      <span id="music-label">Music: off</span>
+    </button>
+    <p class="visually-hidden" id="music-status" role="status" aria-live="polite"></p>
+  </body>
+</html>
